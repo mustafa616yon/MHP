@@ -1,0 +1,616 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: sans-serif;
+    margin: 15px;
+    padding: 0;
+    animation: fadeInUp 0.5s ease forwards; /* Aplica la animación al menú */
+
+}
+
+
+
+.header{
+    display: flex;
+    justify-content: right;
+    position: fixed;
+}
+
+
+#marca{
+    position: fixed; /* Fija el elemento en la pantalla */
+    top: 15px; /* Ajusta la distancia desde la parte superior */
+    right: 15px; /* Ajusta la distancia desde la derecha */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#marca img {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantén la proporción de la imagen */
+    transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+
+
+.background { /* Cambiado a .background para que coincida con el id */
+    position: relative;
+    border-radius: 15px;
+    height: 50vh; /* Ajusta la altura deseada (vh = viewport height) */
+    width: 100%;
+    overflow: hidden;
+    display: flex; /* Para centrar el carrusel si es necesario */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+
+
+.carousel-wrapper {
+    display: flex;
+    width: calc(100% * 4); /* 4 imágenes */
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+    transform: translateX(0);
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Cubre el contenedor, puede recortar */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
+}
+
+.slide-1 {
+    background-image: url('/img/sala hermosa.avif');
+}
+
+.slide-2 {
+    background-image: url('/img/wood.jpg');
+}
+
+.slide-3 {
+    background-image: url('/img/istock.jpg');
+}
+
+.slide-4 {
+    background-image: url('/img/fondoNosotros.jpg');
+}
+
+
+#logo {
+    position: absolute;
+    z-index: 10; /* Asegura que esté por encima del carrusel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo img {
+    border-radius: 160px;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: #0c0c0c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#logo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 5px #ffd700;
+}
+
+#mostrarSup svg {
+    height: 50px;
+    background: linear-gradient(to bottom, #FFD700, #f1f166); /* Degradado de dorado a amarillo claro */
+    padding: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    position: absolute;
+}
+
+#mostrarSup {
+    position: fixed; /* O fixed si quieres que se quede fijo al hacer scroll */
+    top: 15px;
+    left: 15px; /* Cambiamos right a left */
+    z-index: 11;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-image 0.3s ease;
+}
+
+#mostrarSup:hover {
+    transform: scale(1.1);
+}
+
+
+#sup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    max-height: 600px;
+    background: linear-gradient(to bottom, #FFD700, #FFFFE0); /* Degradado de dorado a amarillo claro */
+    padding: 20px;
+    z-index: 12; /* Asegura que esté por encima del logo y el botón */
+    overflow-y: auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade una sombra sutil */
+    animation: fadeInUp 0.5s ease forwards; /* Aplica la animación al menú */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Desplazamiento desde abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Posición final */
+    }
+}
+
+
+
+
+#sup a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    background-color: #6a6a6a;
+}
+
+#sup a svg {
+    width: 15px;
+    height: 15px;
+    fill: rgb(3, 3, 3);
+    stroke: white;
+    z-index: 3;
+}
+
+#sup a:hover {
+    transform: scale(1.1);
+    background-color: #f8f5f5;
+    color: #daa520;
+}
+
+
+
+#salon-CRUD {
+    background-color: #222; /* Fondo oscuro */
+    color: #ffd700; /* Texto dorado */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%; /* Ajusta el ancho según sea necesario */
+    max-width: 800px; /* Ancho máximo para evitar que se extienda demasiado */
+}
+
+#nav-radio {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+#nav-radio label {
+    color: #ffd700;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#nav-radio label:hover {
+    background-color: #333; /* Oscurece un poco al pasar el ratón */
+}
+
+#nav-radio input[type="radio"] {
+    margin-right: 5px;
+}
+
+#producto-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#producto-form input[type="text"],
+#producto-form input[type="file"],
+#producto-form input[type="number"] {
+    background-color: #222; /* Fondo oscuro */
+    background-color: #333;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+#producto-form button {
+    background-color: #ffd700;
+    border: none;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#producto-form button:hover {
+    background-color: #fff;
+}
+
+
+
+.container{
+    background-color: #333; /* Fondo oscuro */
+    color: #ffd700; /* Texto dorado */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+#nombreTabla{
+    display: flex;
+    justify-content: center;
+}
+
+
+#temporal1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual ancho */
+    grid-template-rows: repeat(2, auto); /* 2 filas con altura automática */
+    gap: 10px; /* Espacio entre las tarjetas */
+}
+
+
+
+.producto-card {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(255, 255, 255));
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    width: 250px;
+    margin: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    opacity: 0; /* Oculta inicialmente las tarjetas */
+    transform: translateY(20px); /* Posición inicial para la animación */
+    animation: fadeInUp 0.8s ease forwards; /* Aplica la animación */
+}
+
+.producto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.producto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Cambiado a 'cover' para llenar el espacio */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.producto-card h3 {
+    color: #222;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.producto-card p{
+    color: #000;
+    font-weight: bold;
+    margin: 0;
+}
+
+.producto-card span {
+    color: #444;
+    font-size: 0.9em;
+    margin-bottom: 6px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#botoncarta {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.producto-card button {
+    background-color: #f0c200;
+    color: #222;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.producto-card button:hover {
+    background-color: #e0b300;
+}
+
+
+
+.oculto {
+    display: none;
+}
+
+.flechas {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Espacio entre las tarjetas y los botones */
+}
+
+.flechas a {
+    background-color: #f0c200; /* Color similar al dorado */
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px; /* Espacio entre los botones */
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.flechas a:hover {
+    background-color: #e0b300; /* Oscurece ligeramente al hacer hover */
+}
+
+.flechas a:disabled {
+    background-color: #ccc; /* Color gris para botones deshabilitados */
+    color: #666;
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Desplazamiento desde abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Posición final */
+    }
+}
+
+/* Media query para pantallas pequeñas (teléfonos y pantallas chicas) */
+@media (max-width: 768px) {
+    /* Ajustar el cuerpo */
+    body {
+        margin: 5px;
+        padding: 0;
+        font-size: 14px; /* Reducir el tamaño de fuente general */
+        text-align: center; /* Centrar el texto */
+    }
+
+
+    .background{
+        width: 100%; /* Usar todo el ancho disponible */
+        height:40vh;
+    }
+
+   /* Carrusel */
+   .carousel-wrapper {
+    height: 220px; /* Reducir la altura del carrusel */
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.carousel-slide {
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+}
+
+#marca{
+    position: fixed; /* Asegura que permanezca en una posición fija */
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    right: 15px; /* Ajusta la distancia desde la derecha */
+    z-index: 9999; /* Asegura que esté por encima de otros elementos */
+    margin-top: -25px;
+}
+
+
+    #sup {
+        max-width: 200px;
+                max-height: 300px; /* Ajustar la altura máxima */
+                padding: 10px;
+                text-align: center;
+            }
+
+            
+    #sup a {
+        font-size: 0.7em; /* Reducir el tamaño del texto */
+        padding: 6px;
+        display: flex;
+        justify-content: center; /* Centrar el texto y el icono */
+        align-items: center; /* Centrar verticalmente */
+    }
+
+
+    #mostrarSup svg {
+        height: 35px; /* Reducir el tamaño del botón */
+    }
+
+    /* Logo */
+    #logo img {
+        width: 120px; /* Reducir el tamaño del logo */
+        height: 120px;
+        border-radius: 50%; /* Mantener el diseño circular */
+    }
+
+    /* Contenedor principal */
+    .container {
+        max-width: 95%; /* Usar casi todo el ancho disponible */
+        margin: 10px auto; /* Centrar el contenedor */
+        padding: 15px;
+    }
+
+    /* Tarjetas de productos */
+    #temporal1 {
+        grid-template-columns: repeat(2, 1fr); /* Mostrar 2 columnas en lugar de 4 */
+        gap: 10px; /* Espacio entre las tarjetas */
+        padding: 10px; /* Agregar padding alrededor del contenedor */
+    }
+
+      /* Tarjetas de productos */
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  /* Tarjetas de productos */
+
+  .centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    #temporal1 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espacio uniforme entre las tarjetas */
+        padding: 10px; /* Espaciado interno del contenedor */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .producto-card {
+        max-width: 240px; /* Limitar el ancho máximo de las tarjetas */
+        padding: 10px; /* Reducir el padding interno */
+        margin: 0 auto; /* Centrar las tarjetas */
+        font-size: 0.9em; /* Reducir ligeramente el tamaño del texto */
+        background: #fff; /* Fondo blanco para mayor contraste */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    }
+
+    .producto-card img {
+        width: 100%; /* Ajustar el ancho al contenedor */
+        height: auto; /* Permitir que la altura se ajuste automáticamente */
+        object-fit: contain; /* Mostrar la imagen completa sin recortarla */
+        border-radius: 8px; /* Bordes redondeados */
+        margin-bottom: 8px; /* Espaciado debajo de la imagen */
+    }
+
+    .producto-card h3 {
+        font-size: 2em; /* Tamaño del título */
+        margin-bottom: 5px;
+        text-align: center; /* Centrar el texto */
+    }
+
+    .producto-card p {
+        font-size: 1em; /* Reducir ligeramente el tamaño del texto */
+        margin-bottom: 5px;
+        text-align: center; /* Centrar el texto */
+    }
+
+    .producto-card span {
+        font-size: 1em; /* Reducir el tamaño del texto */
+        display: block;
+        text-align: center; /* Centrar el texto */
+    }
+
+    .producto-card button {
+        font-size: 0.85em; /* Reducir ligeramente el tamaño del texto del botón */
+        padding: 8px 12px; /* Ajustar el tamaño del botón */
+        margin-top: 10px; /* Espaciado superior */
+        display: block;
+        width: 100%; /* Ajustar el ancho al contenedor */
+        border-radius: 6px; /* Bordes redondeados */
+        background-color: #f0c200; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .producto-card button:hover {
+        background-color: #e0b300; /* Oscurecer el color al pasar el ratón */
+    }
+
+    /* Flechas de navegación */
+    .flechas {
+        flex-direction: row; /* Mantener los botones en fila */
+        gap: 5px;
+    }
+
+    .flechas a {
+        font-size: 0.8em; /* Reducir el tamaño del texto */
+        padding: 6px 10px;
+    }
+
+    /* Formulario */
+    #producto-form {
+        padding: 10px;
+        max-width: 95%; /* Ajustar el ancho del formulario */
+        margin: 0 auto; /* Centrar el formulario */
+    }
+
+    #producto-form input[type="text"],
+    #producto-form input[type="file"],
+    #producto-form input[type="number"] {
+        font-size: 0.9em; /* Reducir el tamaño del texto */
+        padding: 8px;
+    }
+
+    #producto-form button {
+        font-size: 0.9em; /* Reducir el tamaño del botón */
+        padding: 8px 12px;
+    }
+
+    /* Modales */
+    #salon-CRUD {
+        max-width: 95%; /* Ajustar el ancho del modal */
+        margin: 10px auto; /* Centrar el modal */
+        padding: 15px;
+    }
+
+    /* Redes sociales */
+    .redes {
+        flex-direction: row; /* Mantener los íconos en fila */
+        justify-content: center; /* Centrar los íconos */
+        gap: 10px; /* Espacio entre los íconos */
+    }
+
+    .redes a {
+        width: 40px; /* Reducir el tamaño del contenedor */
+        height: 40px;
+    }
+
+    .redes svg {
+        width: 20px; /* Reducir el tamaño de los SVG */
+        height: 20px;
+    }
+
+    /* Footer */
+    footer {
+        font-size: 0.8em; /* Reducir el tamaño del texto */
+        padding: 10px;
+    }
+}

@@ -1,0 +1,436 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInUp 0.5s ease forwards; /* Aplica la animación al menú */
+
+}
+
+
+.header{
+    display: flex;
+    justify-content: right;
+    position: fixed;
+}
+
+
+#marca{
+    position: fixed; /* Fija el elemento en la pantalla */
+    top: 15px; /* Ajusta la distancia desde la parte superior */
+    right: 15px; /* Ajusta la distancia desde la derecha */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#marca img {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantén la proporción de la imagen */
+    transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+
+
+
+.background { /* Cambiado a .background para que coincida con el id */
+    position: relative;
+    border-radius: 15px;
+    height: 50vh; /* Ajusta la altura deseada (vh = viewport height) */
+    width: 40%;
+    overflow: hidden;
+    display: flex; /* Para centrar el carrusel si es necesario */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+
+
+.carousel-wrapper {
+    display: flex;
+    width: calc(100% * 4); /* 4 imágenes */
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+    transform: translateX(0);
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Cubre el contenedor, puede recortar */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
+}
+
+.slide-1 {
+    background-image: url('/img/sala hermosa.avif');
+}
+
+.slide-2 {
+    background-image: url('/img/wood.jpg');
+}
+
+.slide-3 {
+    background-image: url('/img/istock.jpg');
+}
+
+.slide-4 {
+    background-image: url('/img/fondoNosotros.jpg');
+}
+
+
+#logo {
+    position: absolute;
+    z-index: 10; /* Asegura que esté por encima del carrusel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo img {
+    border-radius: 160px;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: #0c0c0c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#logo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 5px #ffd700;
+}
+
+#mostrarSup svg {
+    height: 50px;
+    background: linear-gradient(to bottom, #FFD700, #f1f166); /* Degradado de dorado a amarillo claro */
+    padding: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    position: absolute;
+}
+
+#mostrarSup {
+    position: fixed; /* O fixed si quieres que se quede fijo al hacer scroll */
+    top: 15px;
+    left: 15px; /* Cambiamos right a left */
+    z-index: 11;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-image 0.3s ease;
+}
+
+#mostrarSup:hover {
+    transform: scale(1.1);
+}
+
+
+#sup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    max-height: 600px;
+    background: linear-gradient(to bottom, #FFD700, #FFFFE0); /* Degradado de dorado a amarillo claro */
+    padding: 20px;
+    z-index: 12; /* Asegura que esté por encima del logo y el botón */
+    overflow-y: auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade una sombra sutil */
+    animation: fadeInUp 0.5s ease forwards; /* Aplica la animación al menú */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Desplazamiento desde abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Posición final */
+    }
+}
+
+
+
+
+#sup a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    background-color: #6a6a6a;
+}
+
+#sup a svg {
+    width: 15px;
+    height: 15px;
+    fill: rgb(3, 3, 3);
+    stroke: white;
+    z-index: 3;
+}
+
+#sup a:hover {
+    transform: scale(1.1);
+    background-color: #f8f5f5;
+    color: #daa520;
+}
+
+
+
+h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    flex: 1;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: -100px;
+    bottom: 7px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#logoutButton {
+    background-color: #dc3545; /* Rojo */
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* Para que ocupe todo el ancho */
+    margin: 20px auto; /* Centrar horizontalmente y agregar espacio arriba y abajo */
+    width: fit-content; /* Ajustar el ancho al contenido */
+}
+
+#logoutButton:hover {
+    background-color: #c82333; /* Rojo más oscuro */
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Media query para pantallas pequeñas (teléfonos y pantallas chicas) */
+@media (max-width: 768px) {
+    /* Ajustar el cuerpo */
+    body {
+        margin: 10px;
+        padding: 10;
+        font-size: 14px; /* Reducir el tamaño de fuente general */
+        text-align: center; /* Centrar el texto */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Contenedor principal */
+    .background {
+        width: 90%; /* Usar casi todo el ancho disponible */
+        height: auto; /* Ajustar la altura automáticamente */
+        border-radius: 15px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        margin: 20px auto; /* Centrar el contenedor */
+    }
+
+    /* Logo */
+    #logo img {
+        width: 120px; /* Reducir el tamaño del logo */
+        height: auto; /* Mantener la proporción */
+        margin-bottom: 20px;
+    }
+
+    /* Formulario */
+    form {
+        width: 100%; /* Ajustar el ancho al contenedor */
+        max-width: 400px; /* Limitar el ancho máximo */
+        margin: 0 auto; /* Centrar el formulario */
+        padding: 15px;
+        box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+    input[type="tel"] {
+        font-size: 14px; /* Reducir el tamaño del texto */
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 100%; /* Usar todo el ancho disponible */
+        border-radius: 8px; /* Bordes redondeados */
+    }
+
+    button {
+        font-size: 14px; /* Reducir el tamaño del texto */
+        padding: 10px 15px; /* Ajustar el tamaño del botón */
+        width: 100%; /* Usar todo el ancho disponible */
+        border-radius: 8px; /* Bordes redondeados */
+        margin-top: 10px;
+    }
+
+    #logoutButton {
+        font-size: 14px; /* Reducir el tamaño del texto */
+        padding: 10px 15px; /* Ajustar el tamaño del botón */
+        width: 100%; /* Usar todo el ancho disponible */
+        border-radius: 8px; /* Bordes redondeados */
+        margin-top: 10px;
+    }
+
+    /* Enlaces */
+    a {
+        font-size: 14px; /* Reducir el tamaño del texto */
+        margin-top: 10px;
+    }
+
+    /* Carrusel */
+    .carousel-wrapper {
+        height: 220px; /* Reducir la altura del carrusel */
+        border-radius: 15px;
+    }
+
+    .carousel-slide {
+        background-size: cover;
+        background-position: center;
+        border-radius: 15px;
+    }
+
+    /* Menú desplegable */
+ #mostrarSup svg {
+        height: 35px; /* Reducir el tamaño del botón */
+    }
+
+    #sup {
+        max-width: 200px;
+        max-height: 300px; /* Ajustar la altura máxima */
+        padding: 10px;
+        text-align: center;
+    }
+
+    #sup a {
+        font-size: 0.8em; /* Reducir el tamaño del texto */
+        padding: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Contenedor del carrusel */
+    .carousel-wrapper {
+        width: 100%; /* Ajustar el ancho al contenedor */
+        height: 200px; /* Ajustar la altura del carrusel */
+        position: relative; /* Asegurar que los elementos hijos se posicionen dentro del contenedor */
+        border-radius: 15px; /* Bordes redondeados */
+    }
+
+    /* Cada slide del carrusel */
+    .carousel-slide {
+        flex-shrink: 0;
+        width: 100%; /* Cada slide ocupa el 100% del ancho del contenedor */
+        height: 100%; /* Ajustar la altura al contenedor */
+        background-size: cover; /* Cubre el contenedor */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat;
+    }
+
+    /* Imágenes dentro del carrusel */
+    .carousel-slide img {
+        width: 100%; /* Ajustar el ancho al contenedor */
+        height: 100%; /* Ajustar la altura al contenedor */
+        object-fit: cover; /* Ajustar la imagen sin distorsión */
+    }
+}
+
+
+#mensajerojo{
+    color: red;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    display: none; /* Ocultar por defecto */
+}
+
+#mensajerojo2{
+    color: red;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    display: none; /* Ocultar por defecto */
+}

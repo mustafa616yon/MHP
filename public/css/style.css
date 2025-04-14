@@ -1,0 +1,750 @@
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: sans-serif;
+    margin: 15px;
+    padding: 0;
+    animation: fadeInUp 0.5s ease forwards; /* Aplica la animación al menú */
+
+}
+
+
+
+.header{
+    position: relative; /* Asegura que los hijos respeten el z-index */
+    z-index: 1; /* Asegura que el contenedor no interfiera con el z-index de los hijos */
+    display: flex;
+    justify-content: right;
+    position: fixed;
+}
+
+
+#marca {
+    position: fixed; /* Asegura que permanezca en una posición fija al desplazarse */
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    right: 15px; /* Ajusta la distancia desde la derecha */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#marca img {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantén la proporción de la imagen */
+    transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+
+
+.background { /* Cambiado a .background para que coincida con el id */
+    position: relative;
+    border-radius: 15px;
+    height: 50vh; /* Ajusta la altura deseada (vh = viewport height) */
+    width: 100%;
+    overflow: hidden;
+    display: flex; /* Para centrar el carrusel si es necesario */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+
+
+.carousel-wrapper {
+    display: flex;
+    width: calc(100% * 4); /* 4 imágenes */
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+    transform: translateX(0);
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Cubre el contenedor, puede recortar */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
+}
+
+.slide-1 {
+    background-image: url('/img/sala hermosa.avif');
+}
+
+.slide-2 {
+    background-image: url('/img/wood.jpg');
+}
+
+.slide-3 {
+    background-image: url('/img/istock.jpg');
+}
+
+.slide-4 {
+    background-image: url('/img/fondoNosotros.jpg');
+}
+
+
+#logo {
+    position: absolute;
+    z-index: 10; /* Asegura que esté por encima del carrusel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo img {
+    border-radius: 160px;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: #0c0c0c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#logo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 5px #ffd700;
+}
+
+#mostrarSup svg {
+    height: 50px;
+    background: linear-gradient(to bottom, #FFD700, #f1f166); /* Degradado de dorado a amarillo claro */
+    padding: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    position: absolute;
+}
+
+#mostrarSup {
+    position: fixed; /* O fixed si quieres que se quede fijo al hacer scroll */
+    top: 15px;
+    left: 15px; /* Cambiamos right a left */
+    z-index: 11;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-image 0.3s ease;
+}
+
+#mostrarSup:hover {
+    transform: scale(1.1);
+}
+
+#sup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    max-height: 600px;
+    background: linear-gradient(to bottom, #FFD700, #FFFFE0); /* Degradado de dorado a amarillo claro */
+    padding: 20px;
+    z-index: 12; /* Asegura que esté por encima del logo y el botón */
+    overflow-y: auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade una sombra sutil */
+    animation: fadeInUp 0.5s ease forwards; /* Aplica la animación al menú */
+}
+
+#sup a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    background-color: #6a6a6a;
+}
+
+#sup a svg {
+    width: 15px;
+    height: 15px;
+    fill: rgb(3, 3, 3);
+    stroke: white;
+    z-index: 3;
+}
+
+#sup a:hover {
+    transform: scale(1.1);
+    background-color: #f8f5f5;
+    color: #daa520;
+}
+
+
+.caja {
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to right, #ffd700, #daa520);
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.5);
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 90%;
+    z-index: 1; /* Asegura que no bloquee a #marca */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    width: 100%; /* Asegura que nav ocupe todo el ancho de .caja */
+    padding: 0 20px; /* Agrega un poco de padding horizontal */
+    z-index: 1; /* Asegura que no bloquee a #marca */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px; /* Agrega margen horizontal para separar los elementos */
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+nav a svg {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+nav a:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+.contenedorArreglo{
+    padding: 10px;
+    margin: 10px;
+}
+
+
+#catalogo{
+    display: flex;
+    justify-content: center;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#catalogo-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
+    gap: 5px; /* Espacio entre las tarjetas */
+   
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Desplazamiento desde abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Posición final */
+    }
+}
+
+.producto-card {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(255, 255, 255));
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    width: 250px;
+    margin: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    opacity: 0; /* Oculta inicialmente las tarjetas */
+    transform: translateY(20px); /* Posición inicial para la animación */
+    animation: fadeInUp 0.8s ease forwards; /* Aplica la animación */
+}
+
+
+
+.producto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.producto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Cambiado a 'cover' para llenar el espacio */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.producto-card h3 {
+    color: #222;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.producto-card p{
+    color: #000;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.producto-card span {
+    color: #444;
+    font-size: 0.9em;
+    margin-bottom: 6px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#botoncarta {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.producto-card button {
+    background-color: #f0c200;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.producto-card button:hover {
+    background-color: #e0b300;
+}
+
+
+
+.oculto {
+    display: none;
+}
+
+.flechas {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Espacio entre las tarjetas y los botones */
+}
+
+.flechas a {
+    background-color: #f0c200; /* Color similar al dorado */
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px; /* Espacio entre los botones */
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.flechas a:hover {
+    background-color: #e0b300; /* Oscurece ligeramente al hacer hover */
+}
+
+.flechas a:disabled {
+    background-color: #ccc; /* Color gris para botones deshabilitados */
+    color: #666;
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
+}
+
+
+
+
+
+
+
+
+
+.formulario {
+    position: relative;
+    background-color: #2222229a;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1;
+    max-width: 400px; /* Ejemplo de ancho máximo */
+    width: 90%; /* Ancho relativo para pantallas más pequeñas */
+    max-height: 500px;
+
+    margin: 0 auto; /* Centrar el formulario */
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs input {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+#login {
+    background-color: #ffd700;
+    border: none;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#login:hover {
+    background-color: #fff;
+}
+
+
+
+.fond{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.legend {
+    position: relative;
+    max-width: 50%;
+    max-height: 40%; /* Aumenta la altura máxima */
+    overflow-y: auto; /* Agrega scroll si el contenido excede la altura */
+    padding: 20px;
+    text-align: center;
+    color: #353535;
+    border-radius: 0 0 10px 10px;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    font-size: 1.1em;
+    line-height: 1.6;
+    box-shadow: 0 -4px 8px rgb(242, 242, 242);
+    border-radius: 30px;
+    margin-top: 5px;
+    box-shadow: #6a6a6a;
+}
+
+.enlaces {
+    text-align: center;
+    padding: 20px;
+}
+
+.redes {
+    display: flex; /* Alinea los SVG horizontalmente */
+    justify-content: center; /* Centra los SVG */
+    margin-top: 10px; /* Espacio entre el texto "Redes sociales" y los iconos */
+}
+
+.redes a {
+    margin: 0 10px; /* Espacio entre los iconos */
+    display: inline-flex; /* Permite ajustar el tamaño del SVG */
+    align-items: center; /* Centra el SVG verticalmente */
+}
+
+.redes svg {
+    width: 30px; /* Tamaño inicial de los SVG */
+    height: 30px;
+    transition: transform 0.3s ease; /* Transición suave para el efecto hover */
+}
+
+.redes a:hover svg {
+    transform: scale(1.2); /* Aumenta el tamaño al pasar el ratón */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media query para pantallas pequeñas (teléfonos) */
+@media (max-width: 768px) {
+    /* Ajustar el cuerpo */
+    body {
+        margin: 14px;
+        padding: 0;
+        font-size: 13px; /* Reducir el tamaño de fuente */
+    }
+
+    .background{
+        width: 100%; /* Usar todo el ancho disponible */
+        height:40vh;
+    }
+
+   /* Carrusel */
+   .carousel-wrapper {
+    height: 220px; /* Reducir la altura del carrusel */
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.carousel-slide {
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+}
+
+/* Logo */
+#logo img {
+    width: 120px; /* Reducir el tamaño del logo */
+    height: 120px;
+}
+
+
+
+    /* Barra de navegación */
+    .header {
+        flex-direction: column; /* Apilar los elementos verticalmente */
+        background-color: #333; /* Fondo oscuro */
+    }
+
+    #marca{
+        position: fixed; /* Asegura que permanezca en una posición fija */
+        top: 10px; /* Ajusta la distancia desde la parte superior */
+        right: 15px; /* Ajusta la distancia desde la derecha */
+        z-index: 9999; /* Asegura que esté por encima de otros elementos */
+        margin-top: -25px;
+    }
+
+    .caja {
+        z-index: 1; /* Asegura que no bloquee a #marca */
+        padding-top: 0;
+        display: flex;
+        justify-content: center;
+        background: none; /* Elimina el fondo */
+        box-shadow: none; /* Opcional: elimina la sombra si no la necesitas */
+        padding-bottom: 0;
+    }
+
+    nav {
+        z-index: 1; /* Asegura que no bloquee a #marca */
+        display: flex;
+        flex-direction: column; /* Apilar los elementos verticalmente */
+        align-items: center; /* Centrar los elementos */
+        gap: 10px; /* Mayor separación entre los elementos */
+        background-color: transparent; /* Elimina el fondo del contenedor principal */
+    }
+
+    nav a {
+        font-size: 0.9em; /* Reducir el tamaño del texto */
+        text-align: center; /* Centrar el texto */
+        padding: 8px 12px; /* Ajustar el padding interno */
+        margin: 5px 0; /* Espaciado entre los enlaces */
+        display: flex;
+        align-items: center; /* Centrar verticalmente los íconos y texto */
+        justify-content: center; /* Centrar horizontalmente */
+        gap: 10px; /* Espaciado entre el ícono y el texto */
+        background: linear-gradient(to right, #ffd700, #daa520);
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.5);
+        color: #fff; /* Color del texto */
+        border-radius: 8px; /* Bordes redondeados */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: 100%; /* Asegura que el enlace ocupe todo el ancho */
+        max-width: 100px; /* Limitar el ancho máximo */
+    }
+
+    nav a:hover {
+        background-color: #444; /* Cambiar el color de fondo al pasar el ratón */
+        transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el ratón */
+    }
+
+  
+    #mostrarSup svg {
+        height: 35px; /* Reducir el tamaño del botón */
+    }
+
+    #sup {
+        max-width: 200px;
+        max-height: 300px; /* Ajustar la altura máxima */
+        padding: 10px;
+        text-align: center;
+    }
+
+    #sup a {
+        font-size: 0.7em; /* Reducir el tamaño del texto */
+        padding: 8px;
+        display: flex;
+        justify-content: center; /* Centrar el texto y el icono */
+        align-items: center; /* Centrar verticalmente */
+    }
+
+
+    .container1 p,
+    .container1 h2 {
+        font-size: 16px; /* Reducir el tamaño del texto */
+        padding: 8px;
+    }
+
+    /* Redes sociales */
+    .redes {
+        flex-direction: row; /* Mantener los íconos en fila */
+        justify-content: center; /* Centrar los íconos */
+        gap: 10px; /* Espacio entre los íconos */
+    }
+
+    .redes a {
+        margin: 0; /* Eliminar márgenes adicionales */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px; /* Ajustar el tamaño del contenedor */
+        height: 35px;
+        background-color: #444; /* Fondo oscuro para los íconos */
+        border-radius: 50%; /* Hacerlos circulares */
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .redes svg {
+        width: 20px; /* Reducir el tamaño de los SVG */
+        height: 20px;
+    }
+
+    .redes a:hover {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+ 
+    /* Contenedor principal */
+    .fondo {
+        max-width: 100%; /* Usar todo el ancho disponible */
+        min-width: 90%; /* Asegurar que no sea demasiado pequeño */
+        padding: 10px;
+    }
+
+    .video-fondo {
+        border-radius: 10px; /* Reducir el radio de los bordes */
+    }
+
+    /* Secciones */
+    .fondoNosotros,
+    #historia,
+    #equipo,
+    .enlaces {
+        padding: 10px;
+        margin: 10px auto;
+        max-width: 95%; /* Reducir el ancho máximo */
+    }
+
+    #historia h2,
+    #equipo h2 {
+        font-size: 1.3em; /* Reducir el tamaño del título */
+    }
+
+    #historia p,
+    #equipo p {
+        font-size: 0.9em; /* Reducir el tamaño del texto */
+    }
+
+    /* Footer */
+    footer {
+        font-size: 0.8em; /* Reducir el tamaño del texto */
+        padding: 10px;
+    }
+
+    /* Tarjetas de productos */
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    #catalogo-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espacio uniforme entre las tarjetas */
+        padding: 10px; /* Espaciado interno del contenedor */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .producto-card {
+        max-width: 240px; /* Limitar el ancho máximo de las tarjetas */
+        padding: 10px; /* Reducir el padding interno */
+        margin: 0 auto; /* Centrar las tarjetas */
+        font-size: 0.9em; /* Reducir ligeramente el tamaño del texto */
+        background: #fff; /* Fondo blanco para mayor contraste */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    }
+
+    .producto-card img {
+        width: 100%; /* Ajustar el ancho al contenedor */
+        height: auto; /* Permitir que la altura se ajuste automáticamente */
+        object-fit: contain; /* Mostrar la imagen completa sin recortarla */
+        border-radius: 8px; /* Bordes redondeados */
+        margin-bottom: 8px; /* Espaciado debajo de la imagen */
+    }
+
+    .producto-card h3 {
+        font-size: 2em; /* Tamaño del título */
+        margin-bottom: 5px;
+        text-align: center; /* Centrar el texto */
+    }
+
+    .producto-card p {
+        font-size: 1em; /* Reducir ligeramente el tamaño del texto */
+        margin-bottom: 5px;
+        text-align: center; /* Centrar el texto */
+    }
+
+    .producto-card span {
+        font-size: 1em; /* Reducir el tamaño del texto */
+        display: block;
+        text-align: center; /* Centrar el texto */
+    }
+
+    .producto-card button {
+        font-size: 0.85em; /* Reducir ligeramente el tamaño del texto del botón */
+        padding: 8px 12px; /* Ajustar el tamaño del botón */
+        margin-top: 10px; /* Espaciado superior */
+        display: block;
+        width: 100%; /* Ajustar el ancho al contenedor */
+        border-radius: 6px; /* Bordes redondeados */
+        background-color: #f0c200; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .producto-card button:hover {
+        background-color: #e0b300; /* Oscurecer el color al pasar el ratón */
+    }
+
+    /* Botones de navegación */
+
+.flechas{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px; /* Espacio entre las tarjetas y los botones */
+}
+
+
+    .flechas a {
+        padding: 6px 12px; /* Reducir el tamaño de los botones */
+        font-size: 0.9em;
+    }
+
+    /* Menú desplegable */
+  
+}
